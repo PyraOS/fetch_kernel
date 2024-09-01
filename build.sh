@@ -23,7 +23,7 @@ cp dtsi/* linux-"$KERNEL_VERSION"/arch/arm/boot/dts
 cd linux-"$KERNEL_VERSION"
 # Still need a kernel conf here before this is useful
 #echo "Building as a .deb file" 
-make ARCH=armhf CROSS_COMPILE=arm-linux-gnueabihf- pyra_defconf bindeb-pkg -j `nproc`
+make ARCH=armhf CROSS_COMPILE=arm-linux-gnueabihf- pyra_defconfig bindeb-pkg -j `nproc`
 
 #echo "building DTBS"
 make ARCH=armhf CROSS_COMPILE=arm-linux-gnueabihf- pyra_defconfig dtbs -j `nproc`
