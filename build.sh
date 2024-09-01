@@ -7,10 +7,10 @@ KERNEL_MAJOR=$(echo $KERNEL_VERSION | cut -d '.' -f1)
 KERNEL_MINOR=$(echo $KERNEL_VERSION | cut -d '.' -f2)
 KERNEL_PATCH=$(echo $KERNEL_VERSION | cut -d '.' -f3)
 
-
+if [ ! -f linux-"$KERNEL_VERSION".tar.xz ]; then
 echo "Fetching specified kernel"
 wget "https://cdn.kernel.org/pub/linux/kernel/v"$KERNEL_MAJOR".x/linux-"$KERNEL_VERSION".tar.xz"
-
+fi
 
 echo "Extracting Kernel"
 tar -xf linux-"$KERNEL_VERSION".tar.xz
@@ -23,7 +23,7 @@ cp dtsi/* linux-"$KERNEL_VERSION"/arch/arm/boot/dts
 cd linux-"$KERNEL_VERSION"
 # Still need a kernel conf here before this is useful
 #echo "Building as a .deb file" 
-make ARCH=armhf CROSS_COMPILE=arm-linux-gnueabihf- pyra_defconfig bindeb-pkg -j `nproc`
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- pyra_defconfig bindeb-pkg -j `nproc`
 
 #echo "building DTBS"
-make ARCH=armhf CROSS_COMPILE=arm-linux-gnueabihf- pyra_defconfig dtbs -j `nproc`
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- pyra_defconfig dtbs -j `nproc`
