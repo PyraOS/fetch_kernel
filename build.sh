@@ -20,6 +20,7 @@ echo "Copying dtsi and pyra_defconfig file to kernel folder"
 cp config/* linux-"$KERNEL_VERSION"/arch/arm/configs
 cp dtsi/* linux-"$KERNEL_VERSION"/arch/arm/boot/dts
 
+cd linux-"$KERNEL_VERSION"
 # Still need a kernel conf here before this is useful
 #echo "Building as a .deb file" 
 make ARCH=armhf CROSS_COMPILE=arm-linux-gnueabihf- pyra_defconf bindeb-pkg -j `nproc`
