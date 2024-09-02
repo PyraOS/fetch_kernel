@@ -25,7 +25,7 @@ cp dtsi/* linux-"$KERNEL_VERSION"/arch/arm/boot/dts
 cd linux-"$KERNEL_VERSION"
 # Still need a kernel conf here before this is useful
 #echo "Building as a .deb file" 
-make ARCH=arm CROSS_COMPILE=arm-none-e- CFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=vfp" CXXFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=vfp" pyra_defconfig bindeb-pkg -j `nproc`
+make ARCH=arm CROSS_COMPILE=arm-none-eabi- CFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=vfp" CXXFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=vfp" pyra_defconfig bindeb-pkg -j `nproc`
 
 #echo "building DTBS"
 make ARCH=arm CROSS_COMPILE=arm-none-eabi- CFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=vfp" CXXFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=vfp" pyra_defconfig dtbs -j `nproc`
